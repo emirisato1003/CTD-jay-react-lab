@@ -1,10 +1,21 @@
-function ProductList(props){
-    
+import ProductCard from "./ProductCard";
+
+function ProductList({ inventory, children }) {
+    // const inventory = props.inventory
     return (
         <ul>
-            <li>{props.inventory}</li>
+            {children}
+            {inventory.map(item => {
+                return (
+                    <ProductCard
+                        key={item.id}
+                        name={item.baseName}
+                        description={item.baseDescription}
+                    />
+                );
+            })}
         </ul>
-    )
+    );
 }
 
-export default ProductList
+export default ProductList;
