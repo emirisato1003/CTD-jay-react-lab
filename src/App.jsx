@@ -8,6 +8,7 @@ import ProductCard from './components/ProductCard';
 import TacoBuilder from './components/TacoBuilder/TacoBuilder';
 import CreateUserForm from './components/UserForm/CreateUserForm';
 import Counter from './components/Counter/Counter';
+import WebSocketComponent from './components/WebSocket/WebSocketComponent';
 
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
       <div>
         <h1>Counter</h1>
         <Counter />
+      </div>
+      <div>
+        <WebSocketComponent />
       </div>
     </>
   );
