@@ -5,6 +5,7 @@ import inventoryData from './assets/inventory.json';
 import Header from './components/Header';
 import './App.css';
 import ProductCard from './components/ProductCard';
+import TacoBuilder from './components/TacoBuilder/TacoBuilder';
 
 
 function App() {
@@ -15,14 +16,24 @@ function App() {
       <ProductCard
         name="Limited Edition Tee!"
         description="Special limited edition neon green shirt with a metallic Code the Dream Logo shinier than the latest front-end framework! Signed by the legendary Frank!" />
-    )
+    );
   }
   return (
-    <main>
-      <Header />
-      <ProductList inventory={inventory}>{promoteItem()}</ProductList>
-    </main>
+    <>
+      <main>
+        <Header />
+        <ProductList inventory={inventory}>{promoteItem()}</ProductList>
+      </main>
+      <hr />
+      <br />
+      <div>
+        <h1>Taco Builder</h1>
+        <TacoBuilder />
+      </div>
+    </>
   );
 }
 
 export default App;
+
+
