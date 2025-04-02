@@ -7,6 +7,7 @@ import './App.css';
 import ProductCard from './components/ProductCard';
 import TacoBuilder from './components/TacoBuilder/TacoBuilder';
 import CreateUserForm from './components/UserForm/CreateUserForm';
+import Counter from './components/Counter/Counter';
 
 
 function App() {
@@ -31,9 +32,15 @@ function App() {
         <h1>Taco Builder</h1>
         <TacoBuilder />
       </div>
+      <hr />
       <div>
         <h1>User Form</h1>
         <CreateUserForm />
+      </div>
+      <hr />
+      <div>
+        <h1>Counter</h1>
+        <Counter />
       </div>
     </>
   );
