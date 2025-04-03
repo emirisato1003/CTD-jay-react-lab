@@ -42,11 +42,12 @@ function App() {
       <hr />
       <div>
         <h1>Counter</h1>
-        <Counter />
+        {/* <Counter /> */}
       </div>
       <div>
-        <WebSocketComponent />
+        {/* <WebSocketComponent /> */}
       </div>
+      <hr />
       <div>
         <ExampleComponent />
       </div>
