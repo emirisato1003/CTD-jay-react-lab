@@ -9,6 +9,7 @@ import TacoBuilder from './components/TacoBuilder/TacoBuilder';
 import CreateUserForm from './components/UserForm/CreateUserForm';
 import Counter from './components/Counter/Counter';
 import WebSocketComponent from './components/WebSocket/WebSocketComponent';
+import ExampleComponent from './components/ExampleComponent/ExampleComponent';
 
 
 function App() {
@@ -45,6 +46,9 @@ function App() {
       </div>
       <div>
         <WebSocketComponent />
+      </div>
+      <div>
+        <ExampleComponent />
       </div>
     </>
   );
