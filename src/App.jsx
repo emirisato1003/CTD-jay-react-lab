@@ -24,7 +24,7 @@ function App() {
   // inventory related logics
   const [inventory, setInventory] = useState([]);
   const [cart, setCart] = useState([]);
-
+  
   function handleAddItemToCart(id) {
     const target = inventory.find((item) => item.id === id);
     if (!target) {
