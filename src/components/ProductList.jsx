@@ -1,6 +1,6 @@
 import ProductCard from "./ProductCard";
 
-function ProductList({ inventory, children }) {
+function ProductList({ inventory, children, handleAddItemToCart}) {
     // const inventory = props.inventory
     return (
         <ul>
@@ -9,8 +9,10 @@ function ProductList({ inventory, children }) {
                 return (
                     <ProductCard
                         key={item.id}
+                        id={item.id}
                         name={item.baseName}
                         description={item.baseDescription}
+                        handleAddItemToCart={handleAddItemToCart}
                     />
                 );
             })}
