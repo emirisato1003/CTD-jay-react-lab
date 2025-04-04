@@ -1,16 +1,21 @@
-import { useState } from 'react';
-// import viteLogo from '/vite.svg';
+// components
 import ProductList from './components/ProductList';
 import inventoryData from './assets/inventory.json';
 import Header from './components/Header';
-import './App.css';
 import ProductCard from './components/ProductCard';
 import TacoBuilder from './components/TacoBuilder/TacoBuilder';
 import CreateUserForm from './components/UserForm/CreateUserForm';
 import Counter from './components/Counter/Counter';
 import WebSocketComponent from './components/WebSocket/WebSocketComponent';
 import ExampleComponent from './components/ExampleComponent/ExampleComponent';
+import PageTitleUpdatingCounter from './components/Counter/PageTitleUpdatingCounter';
+import Timer from './components/ExampleComponent/Timer';
+import MyComponent from './components/ExampleComponent/MyComponent';
 
+import './App.css';
+
+// React Hooks
+import { useState } from 'react';
 
 function App() {
   const [inventory, setInventory] = useState(inventoryData.inventory);
@@ -50,6 +55,17 @@ function App() {
       <hr />
       <div>
         <ExampleComponent />
+      </div>
+      <hr />
+      <div>
+        <PageTitleUpdatingCounter />
+      </div>
+      <hr />
+      <div>
+        <Timer />
+      </div>
+      <div>
+        <MyComponent />
       </div>
     </>
   );
