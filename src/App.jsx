@@ -11,6 +11,7 @@ import ExampleComponent from './components/ExampleComponent/ExampleComponent';
 import PageTitleUpdatingCounter from './components/Counter/PageTitleUpdatingCounter';
 import Timer from './components/ExampleComponent/Timer';
 import MyComponent from './components/ExampleComponent/MyComponent';
+import WindowTracker from './components/ExampleComponent/WindowTracker';
 
 import './App.css';
 
@@ -19,7 +20,7 @@ import { useState } from 'react';
 
 function App() {
   const [inventory, setInventory] = useState(inventoryData.inventory);
-
+  const [show, setShow] = useState(true);
   function promoteItem() {
     return (
       <ProductCard
@@ -29,7 +30,7 @@ function App() {
   }
   return (
     <>
-      <main>
+      {/* <main>
         <Header />
         <ProductList inventory={inventory}>{promoteItem()}</ProductList>
       </main>
@@ -47,10 +48,10 @@ function App() {
       <hr />
       <div>
         <h1>Counter</h1>
-        {/* <Counter /> */}
+        <Counter />
       </div>
       <div>
-        {/* <WebSocketComponent /> */}
+        <WebSocketComponent />
       </div>
       <hr />
       <div>
@@ -66,6 +67,10 @@ function App() {
       </div>
       <div>
         <MyComponent />
+      </div> */}
+      <div className='container'>
+        <button onClick={() => setShow(prev => !prev)}>Toggle WindowTracker</button>
+        {show && <WindowTracker />}
       </div>
     </>
   );
