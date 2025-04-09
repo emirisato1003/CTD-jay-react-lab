@@ -41,7 +41,8 @@ function App() {
     return (
       <ProductCard
         name="Limited Edition Tee!"
-        description="Special limited edition neon green shirt with a metallic Code the Dream Logo shinier than the latest front-end framework! Signed by the legendary Frank!" />
+        // "Special limited edition neon green shirt with a metallic Code the Dream Logo shinier than the latest front-end framework! Signed by the legendary Frank!"
+        description="Special limited edition neon green shirt with..." />
     );
   }
 

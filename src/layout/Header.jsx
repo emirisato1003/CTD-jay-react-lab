@@ -1,17 +1,22 @@
 // import reactLogo from '../assets/react.svg';
 import { BsCartFill } from "react-icons/bs";
+import ctdLogo from '../assets/icons/mono-blue-logo.svg';
+import shoppingCartLogo from '../assets/icons/shoppingCart.svg';
 
-export default function Header({cart}) {
-    const styles = { height: 100, width: 100 };
+export default function Header({ cart }) {
 
     return (
-        <div className="coming-soon">
-            <h1>CTD Swag</h1> {/* `title` inserted into heading */}
-            <div style={styles}>
-                {/* <img src={reactLogo} alt="Code The Dream Logo" /> */}
-            </div>
-            <div><BsCartFill />{cart.length}</div>
-            {/* <h2>{message}</h2> 'message' inserted into heading */}
-        </div>
+        <header>
+            <nav>
+                <div className="nav-logo">
+                    <img src={ctdLogo} alt="CTD logo" />
+                    <span className="nav-logo-text">CTD Swag</span>
+                </div>
+                <div className="cart">
+                    <div className="cart-item-number">{1}</div>
+                    <img className="cart-logo" src={shoppingCartLogo} alt="shopping cart" />
+                </div>
+            </nav>
+        </header>
     );
 }

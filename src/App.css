@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-.logo {
+/* .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
@@ -16,22 +16,8 @@
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
-}
+} */
 
-main ul{
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-main ul li{
-  background-color: aquamarine;
-  margin: 20px;
-  max-width: 150px;
-  padding: 10px;
-  border-radius: 10px;
-}
 
 @keyframes logo-spin {
   from {
