@@ -35,6 +35,7 @@ function ProductList({ inventory, children, handleAddItemToCart }) {
                         name={item.baseName}
                         description={item.baseDescription}
                         handleAddItemToCart={handleAddItemToCart}
+                        products={products}
                     />
                 );
             })}

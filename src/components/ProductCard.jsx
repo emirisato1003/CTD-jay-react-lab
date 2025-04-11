@@ -1,6 +1,7 @@
 import placeholderImg from '../assets/placeholder.png';
 
-export default function ProductCard({ name, description, handleAddItemToCart, id }) {
+export default function ProductCard({ name, description, handleAddItemToCart, id, products}) {
+    console.log(products.variants);
     return (
         <li>
             <div className="itemCard">
@@ -12,7 +13,7 @@ export default function ProductCard({ name, description, handleAddItemToCart, id
                     <p>{description}</p>
                 </div>
                 <div className="itemCard-footer">
-                    <button onClick={() => handleAddItemToCart(id)}>Add to Cart</button>
+                    {<button onClick={() => handleAddItemToCart(id)}>Add to Cart</button>}
                 </div>
             </div>
         </li>
