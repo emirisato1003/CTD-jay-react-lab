@@ -4,7 +4,7 @@ import ctdLogo from '../assets/icons/mono-blue-logo.svg';
 import shoppingCartLogo from '../assets/icons/shoppingCart.svg';
 
 export default function Header({ cart }) {
-
+    // console.log(cart.length);
     return (
         <header>
             <nav>
@@ -13,7 +13,7 @@ export default function Header({ cart }) {
                     <span className="nav-logo-text">CTD Swag</span>
                 </div>
                 <div className="cart">
-                    <div className="cart-item-number">{1}</div>
+                    <div className="cart-item-number">{cart.length}</div>
                     <img className="cart-logo" src={shoppingCartLogo} alt="shopping cart" />
                 </div>
             </nav>
