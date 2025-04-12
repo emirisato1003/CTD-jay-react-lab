@@ -1,7 +1,7 @@
 import placeholderImg from '../assets/placeholder.png';
 
-export default function ProductCard({ name, description, handleAddItemToCart, id, product}) {
-    console.log(product.variants);
+export default function ProductCard({ product, handleAddItemToCart}) {
+    // console.log(product.variants);
     return (
         <li>
             <div className="itemCard">
@@ -9,11 +9,11 @@ export default function ProductCard({ name, description, handleAddItemToCart, id
                     <img src={placeholderImg} alt="No preview" className='itemCard-img' />
                 </div>
                 <div className="itemCard-content">
-                    <h2>{name}</h2>
-                    <p>{description}</p>
+                    <h2>{product.baseName}</h2>
+                    <p>{product.baseDescription}</p>
                 </div>
                 <div className="itemCard-footer">
-                    {<button onClick={() => handleAddItemToCart(id)}>Add to Cart</button>}
+                    {product.variants.length > 1 ? (<button>Show Options</button> ): (<button onClick={() => handleAddItemToCart(product.variants[0].id)}>Add to Cart</button>)}
                 </div>
             </div>
         </li>

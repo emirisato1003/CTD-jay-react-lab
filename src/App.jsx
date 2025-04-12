@@ -24,7 +24,7 @@ function App() {
     }
 
     const cartItem = { ...target, cartItemId: Date.now() };
-    console.log(cartItem);
+    // console.log(cartItem);
     setCart([...cart, cartItem]);
   }
 
