@@ -27,15 +27,16 @@ function ProductList({ inventory, children, handleAddItemToCart }) {
     return (
         <ul>
             {children}
-            {inventory.map(item => {
+            {products.map(product => {
                 return (
                     <ProductCard
-                        key={item.id}
-                        id={item.id}
-                        name={item.baseName}
-                        description={item.baseDescription}
+                        product={product}
+                        key={product.id}
+                        id={product.id}
+                        name={product.baseName}
+                        description={product.baseDescription}
                         handleAddItemToCart={handleAddItemToCart}
-                        products={products}
+                        // product={workingP}
                     />
                 );
             })}

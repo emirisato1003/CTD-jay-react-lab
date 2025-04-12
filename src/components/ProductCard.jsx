@@ -1,7 +1,7 @@
 import placeholderImg from '../assets/placeholder.png';
 
-export default function ProductCard({ name, description, handleAddItemToCart, id, products}) {
-    console.log(products.variants);
+export default function ProductCard({ name, description, handleAddItemToCart, id, product}) {
+    console.log(product.variants);
     return (
         <li>
             <div className="itemCard">
