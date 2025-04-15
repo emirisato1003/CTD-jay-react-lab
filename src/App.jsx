@@ -9,13 +9,18 @@ import ProductList from './components/ProductList';
 import inventoryData from './assets/inventory.json';
 import Header from './layout/Header';
 import ProductCard from './components/ProductCard';
+import Cart from './components/Cart';
 
 
 function App() {
   // inventory related logics
   const [inventory, setInventory] = useState([]);
   const [cart, setCart] = useState([]);
+  const [isCartOpen, setIsCartOpen] =useState(false)
 
+  function handleCart(){
+    setIsCartOpen(prev => !prev)
+  }
   function handleAddItemToCart(id) {
     const target = inventory.find((item) => item.id === id);
     if (!target) {
@@ -47,14 +52,20 @@ function App() {
   }
 
   return (
-    <main>
-      <Header cart={cart} />
-      <ProductList
-        handleAddItemToCart={handleAddItemToCart}
-        inventory={inventory}>
-        {promoteItem()}
-      </ProductList>
-    </main>
+    <>
+      <Header cart={cart} handleCart={handleCart} />
+      <main>
+        <ProductList
+          handleAddItemToCart={handleAddItemToCart}
+          inventory={inventory}>
+          {promoteItem()}
+        </ProductList>
+        {isCartOpen && <Cart cart={cart} handleCart={handleCart}/>}
+      </main>
+      <footer>
+        <p>&copy; Emiri Sato</p>
+      </footer>
+    </>
   );
 }
 

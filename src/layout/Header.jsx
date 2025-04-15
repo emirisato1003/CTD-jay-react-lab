@@ -4,8 +4,8 @@ import ctdLogo from '../assets/icons/mono-blue-logo.svg';
 import shoppingCartLogo from '../assets/icons/shoppingCart.svg';
 import { useEffect } from "react";
 
-export default function Header({ cart }) {
-    // console.log(cart.length);
+export default function Header({ cart, handleCart }) {
+    // console.log(handleCart);
     useEffect(() => {
         cart.forEach(item => {
             console.log(item.baseName, item.cartItemId);
@@ -21,7 +21,7 @@ export default function Header({ cart }) {
                     <img src={ctdLogo} alt="CTD logo" />
                     <span className="nav-logo-text">CTD Swag</span>
                 </div>
-                <div className="cart">
+                <div className="cart" onClick={() => handleCart()}>
                     <div className="cart-item-number">{cart.length}</div>
                     <img className="cart-logo" src={shoppingCartLogo} alt="shopping cart" />
                 </div>
