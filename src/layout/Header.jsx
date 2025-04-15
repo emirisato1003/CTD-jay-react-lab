@@ -14,6 +14,10 @@ export default function Header({ cart, handleCart }) {
             console.log('--end of cart --');
         }
     })
+
+    function getItemCount(){
+        return cart.reduce((acc, item) => acc + item.itemCount, 0)
+    }
     return (
         <header>
             <nav>
@@ -22,7 +26,7 @@ export default function Header({ cart, handleCart }) {
                     <span className="nav-logo-text">CTD Swag</span>
                 </div>
                 <div className="cart" onClick={() => handleCart()}>
-                    <div className="cart-item-number">{cart.length}</div>
+                    <div className="cart-item-number">{getItemCount()}</div>
                     <img className="cart-logo" src={shoppingCartLogo} alt="shopping cart" />
                 </div>
             </nav>

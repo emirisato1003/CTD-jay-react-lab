@@ -21,16 +21,31 @@ function App() {
   function handleCart(){
     setIsCartOpen(prev => !prev)
   }
+
+  // common function in e-commerce app to add items to a shopping cart
   function handleAddItemToCart(id) {
-    const target = inventory.find((item) => item.id === id);
-    if (!target) {
+    // console.log(id);
+    const inventoryItem = inventory.find((item) => item.id === id);
+    const itemToUpdate = cart.find(item => item.id === id)
+    const cartItem = { ...inventoryItem, cartItemId: Date.now() };
+    let updatedCartItem;
+    
+    if (!inventoryItem) {
       console.error('cart error: item not found');
       return;
     }
 
-    const cartItem = { ...target, cartItemId: Date.now() };
+    if(itemToUpdate){
+      updatedCartItem ={
+        ...itemToUpdate,
+        itemCount: itemToUpdate.itemCount + 1
+      };
+    } else{
+      updatedCartItem = {...inventoryItem, itemCount: 1}
+    }
+
     // console.log(cartItem);
-    setCart([...cart, cartItem]);
+    setCart([...cart.filter(item => item.id !== id), updatedCartItem]);
   }
 
   // function removeItemFromCart(id){
@@ -60,7 +75,12 @@ function App() {
           inventory={inventory}>
           {promoteItem()}
         </ProductList>
-        {isCartOpen && <Cart cart={cart} handleCart={handleCart}/>}
+        {isCartOpen && 
+          <Cart 
+            cart={cart}
+            setCart={setCart}
+            handleCart={handleCart}
+          />}
       </main>
       <footer>
         <p>&copy; Emiri Sato</p>
