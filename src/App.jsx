@@ -5,43 +5,43 @@ import './App.css';
 import { useEffect, useState } from 'react';
 
 // components
-import ProductList from './components/ProductList';
+import ProductList from './features/ProductList';
 import inventoryData from './assets/inventory.json';
 import Header from './layout/Header';
-import ProductCard from './components/ProductCard';
-import Cart from './components/Cart';
+import ProductCard from './features/ProductCard';
+import Cart from './features/Cart/Cart';
 
 
 function App() {
   // inventory related logics
   const [inventory, setInventory] = useState([]);
   const [cart, setCart] = useState([]);
-  const [isCartOpen, setIsCartOpen] =useState(false)
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
-  function handleCart(){
-    setIsCartOpen(prev => !prev)
+  function handleCart() {
+    setIsCartOpen(prev => !prev);
   }
 
   // common function in e-commerce app to add items to a shopping cart
   function handleAddItemToCart(id) {
     // console.log(id);
     const inventoryItem = inventory.find((item) => item.id === id);
-    const itemToUpdate = cart.find(item => item.id === id)
+    const itemToUpdate = cart.find(item => item.id === id);
     const cartItem = { ...inventoryItem, cartItemId: Date.now() };
     let updatedCartItem;
-    
+
     if (!inventoryItem) {
       console.error('cart error: item not found');
       return;
     }
 
-    if(itemToUpdate){
-      updatedCartItem ={
+    if (itemToUpdate) {
+      updatedCartItem = {
         ...itemToUpdate,
         itemCount: itemToUpdate.itemCount + 1
       };
-    } else{
-      updatedCartItem = {...inventoryItem, itemCount: 1}
+    } else {
+      updatedCartItem = { ...inventoryItem, itemCount: 1 };
     }
 
     // console.log(cartItem);
@@ -75,8 +75,8 @@ function App() {
           inventory={inventory}>
           {promoteItem()}
         </ProductList>
-        {isCartOpen && 
-          <Cart 
+        {isCartOpen &&
+          <Cart
             cart={cart}
             setCart={setCart}
             handleCart={handleCart}
