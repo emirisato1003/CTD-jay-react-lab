@@ -1,7 +1,7 @@
 // import reactLogo from '../assets/react.svg';
 import { BsCartFill } from "react-icons/bs";
-import ctdLogo from '../assets/icons/mono-blue-logo.svg';
-import shoppingCartLogo from '../assets/icons/shoppingCart.svg';
+import ctdLogo from '../../assets/icons/mono-blue-logo.svg';
+import shoppingCartLogo from '../../assets/icons/shoppingCart.svg';
 import { useEffect } from "react";
 
 export default function Header({ cart, handleCart }) {

@@ -1,7 +1,6 @@
 
 import { useState } from 'react';
-import placeholder from '../assets/placeholder.png';
-
+import placeholder from '../../assets/placeholder.png'
 export default function Cart({ cart, handleCart, setCart }) {
     const [workingCart, setWorkingCart] = useState(cart);
     const [isFormDirty, setIsFormDirty] = useState(false);
