@@ -2,7 +2,7 @@
 import './App.css';
 
 // React Hooks
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // components
 import ProductList from './features/ProductList';
@@ -10,6 +10,7 @@ import inventoryData from './assets/inventory.json';
 import Header from './shared/layout/Header';
 import ProductCard from './features/ProductCard';
 import Cart from './features/Cart/Cart';
+import Footer from './shared/layout/Footer';
 
 
 function App() {
@@ -82,9 +83,7 @@ function App() {
             handleCart={handleCart}
           />}
       </main>
-      <footer>
-        <p>&copy; Emiri Sato</p>
-      </footer>
+      <Footer />
     </>
   );
 }
