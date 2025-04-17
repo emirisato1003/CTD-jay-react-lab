@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import placeholderImg from '../assets/placeholder.png';
-import ProductCardVariants from '../components/ProductCardVariants';
+import ProductCardVariants from './ProductCardVariants';
 
 
 export default function ProductCard({ product, handleAddItemToCart }) {
