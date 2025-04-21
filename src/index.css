@@ -3,8 +3,8 @@
 }
 
 html, body{
+  height: 100%;
   margin: 0;
-  padding: 0;
 }
 
 body{
@@ -14,6 +14,7 @@ body{
 nav{
   display: flex;
   justify-content: space-between;
+  padding: 2em;
 }
 
 nav img{
@@ -44,7 +45,12 @@ nav img{
   position: relative;
 }
 
-main ul{
+main{
+  flex: 1;
+  margin-block: 1em;
+}
+
+main ul.productList{
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
@@ -52,14 +58,14 @@ main ul{
   justify-content: center;
 }
 
-main ul li{
+main ul.productList li{
   background-color:#e7f6f4;
   border-radius: 10px;
 }
 
 .itemCard{
   max-width: 180px;
-  height: 350px;
+  height: 320px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -97,3 +103,61 @@ button:hover{
   background-color: color(srgb 0.701961 0.878431 0.862745 / 0.5);
 }
 
+.cartListWrapper{
+  background-color: #13284D;
+  color: white;
+  transform: translate(800px,-800px);
+  /* max-width: 550px; */
+  min-width: 25vw;
+  min-height: 50vh;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 2em;
+  z-index: 1;
+  position: absolute;
+}
+
+.cartScreen{
+  backdrop-filter: blur(4px);
+    border-radius: var(--medium-radius);
+    content: "";
+    background-color: rgb(from var(--light-blue) r g b /.25);
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: -10px;
+    right: -10px;
+    z-index: 1;
+}
+
+ul.cartList{
+  list-style: none;
+  padding: 0;
+}
+
+li.cartListItem{
+  display: flex;
+  justify-content: space-evenly;
+  padding-block: 15px;
+  border-bottom: 1px solid white;
+}
+
+.cartListItem img{
+  width: 200px;
+}
+
+.cartCloseBtn{
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+footer{
+  position:sticky;
+  background-color: #13284D;
+  padding-bottom: 1em;
+  color: white;
+}
+
+footer a{
+  color: white;
+}

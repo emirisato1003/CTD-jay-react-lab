@@ -25,7 +25,7 @@ function ProductList({ inventory, handleAddItemToCart }) {
         setProducts([...workingProducts]);
     }, [inventory]);
     return (
-        <ul>
+        <ul className="productList">
             {products.map(product => {
                 return (
                     <ProductCard

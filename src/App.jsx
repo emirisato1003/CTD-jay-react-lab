@@ -81,7 +81,7 @@ function App() {
             cart={cart}
             setCart={setCart}
             handleCart={handleCart}
-          />}
+          />} 
       </main>
       <Footer />
     </>
