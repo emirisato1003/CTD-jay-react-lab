@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import placeholder from '../../assets/placeholder.png';
+import CartItem from './CartItem';
 export default function Cart({ cart, handleCart, setCart }) {
     const [workingCart, setWorkingCart] = useState(cart);
     const [isFormDirty, setIsFormDirty] = useState(false);
@@ -47,6 +47,15 @@ export default function Cart({ cart, handleCart, setCart }) {
         setWorkingCart([...cart]);
     }
 
+    function removeEmptyItems(cart) {
+        return cart.filter(item => item.itemCount !== 0);
+    }
+
+    function handleConfirm(e) {
+        e.preventDefault();
+        setIsFormDirty(false);
+    }
+
     return (
         <>
             <div className="cartScreen"></div>
@@ -55,27 +64,14 @@ export default function Cart({ cart, handleCart, setCart }) {
                     <ul className='cartList'>
                         {workingCart.map(item => {
                             return (
-                                <li key={item.cartItemId} className='cartListItem'>
-                                    <img src={placeholder} alt="" className='cartListItemImage' />
-                                    <div className="cartListItemDetail">
-                                        <h2>{item.baseName}</h2>
-                                        {item.variantName !== 'Default' ? <p>{item.variantName}</p> : null}
-                                        <form>
-                                            <label htmlFor="itemCount">
-                                                Count:
-                                                <input type='number' value={item.itemCount} onChange={(event) => handleUpdateField({ event, id: item.id })} />
-                                            </label>
-                                        </form>
-                                        <p>SubTotal: ${(item.price * item.itemCount).toFixed(2)}</p>
-                                    </div>
-                                </li>
+                                <CartItem key={item.id} item={item} onHandleItemUpdate={handleUpdateField}/>
                             );
                         })}
                         <h2>Cart Total: ${getCartTotal()}</h2>
                         {isFormDirty &&
-                            <div>
-                                <button>Confirm Update</button>
-                                <button onClick={handleCancel}>Cancel Update</button>
+                            <div className='cartUpdateBtn'>
+                                <button onClick={handleConfirm} className='cartConfirmBtn'>Confirm Update</button>
+                                <button onClick={handleCancel} className='cartCancelBtn'>Cancel Update</button>
                             </div>
                         }
                     </ul>

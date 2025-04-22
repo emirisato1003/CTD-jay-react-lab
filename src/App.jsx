@@ -7,10 +7,10 @@ import { useEffect, useRef, useState } from 'react';
 // components
 import ProductList from './features/ProductList';
 import inventoryData from './assets/inventory.json';
-import Header from './shared/layout/Header';
+import Header from './layout/Header';
 import ProductCard from './features/ProductCard';
 import Cart from './features/Cart/Cart';
-import Footer from './shared/layout/Footer';
+import Footer from './layout/Footer';
 
 
 function App() {

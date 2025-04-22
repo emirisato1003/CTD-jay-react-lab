@@ -11,24 +11,24 @@ body{
   font-family: 'Inter', sans-serif;
 }
 
-nav{
+header{
   display: flex;
   justify-content: space-between;
   padding: 2em;
 }
 
-nav img{
+header img{
   width: 45px;
   height: auto;
 }
 
-.nav-logo{
+.header-logo{
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.nav-logo-text{
+.header-logo-text{
   font-weight: bold;
   font-size: 2rem;
 }
@@ -148,6 +148,19 @@ li.cartListItem{
 
 .cartCloseBtn{
   margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+
+.cartUpdateBtn{
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  gap: 10px;
+  margin: 2em;
+}
+
+.cartUpdateBtn button{
   border-radius: 10px;
 }
 
