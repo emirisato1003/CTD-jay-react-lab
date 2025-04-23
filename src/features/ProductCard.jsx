@@ -4,7 +4,7 @@ import ProductCardVariants from './ProductCardVariants';
 
 
 export default function ProductCard({ product, handleAddItemToCart }) {
-    // console.log(product.variants);
+    console.log(product);
     const [isVariantShown, setIsVariantShown] = useState(false);
 
     return (
@@ -18,9 +18,9 @@ export default function ProductCard({ product, handleAddItemToCart }) {
                     <p>{product.baseDescription}</p>
                 </div>
                 <div className="itemCard-footer">
-                    {product.variants.length > 1 ?
+                    {product.variants?.length > 1 ?
                         <button onClick={() => setIsVariantShown(prev => !prev)}>Show Options</button> :
-                        <button onClick={() => handleAddItemToCart(product.variants[0].id)}>Add to Cart</button>}
+                        <button onClick={() => handleAddItemToCart(product?.variants[0].id)}>Add to Cart</button>}
                 </div>
                 {isVariantShown &&
                     <ProductCardVariants
