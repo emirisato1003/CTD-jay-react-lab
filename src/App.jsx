@@ -14,10 +14,14 @@ import Footer from './layout/Footer';
 
 
 function App() {
+  // useState
   // inventory related logics
   const [inventory, setInventory] = useState([]);
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isAuthenticating, setIsAuthenticating] = useState('false');
+  const [user, setUser] = useState({});
+  const [authError, setAuthError] = useState('');
 
   function handleCart() {
     setIsCartOpen(prev => !prev);
@@ -67,6 +71,52 @@ function App() {
     );
   }
 
+  const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+
+  // useEffect(() => {
+  //   (async () => {
+  //     try{
+  //       const res = await fetch(`${baseUrl}/products`);
+  //       if(!res.ok){
+  //         throw new Error(res.status)
+  //       }
+  //       const data = await res.json()
+  //       console.log(products);
+  //       setInventory([...products])
+  //       // if(data.status != 'success'){
+  //       //   throw new Error(data.status)
+  //       // }
+  //     }catch(error){
+  //       console.log(error.message);
+  //     }
+  //   })
+  // }, [])
+
+  async function handleAuthenticate(creadentials) {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(creadentials),
+      headers: { 'Content-Type': 'application/json' }
+    };
+    try {
+      setIsAuthenticating(true)
+      const res = await fetch(`${baseUrl}/auth/login`, options);
+      if (!res.ok) {
+        // status will be 401 if authentication fails
+        // we want to handle it differently then other errors
+        if (res.status === 401) {
+          setAuthError(res.statusText)
+        }
+        throw new Error(res.status);
+      }
+      const userData = res.json()
+      // assigning an new object that's more convenient to work with
+      setUser({...userData.user, token: userData.token})
+      setIsAuthenticating(false)
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
   return (
     <>
       <Header cart={cart} handleCart={handleCart} />
@@ -81,7 +131,7 @@ function App() {
             cart={cart}
             setCart={setCart}
             handleCart={handleCart}
-          />} 
+          />}
       </main>
       <Footer />
     </>
