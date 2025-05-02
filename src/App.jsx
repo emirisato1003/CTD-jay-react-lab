@@ -12,10 +12,9 @@ import ProductCard from './features/ProductCard';
 import Cart from './features/Cart/Cart';
 import Footer from './layout/Footer';
 import AuthDialog from './features/Auth/AuthDialog';
-import "./server"
-import { sortByBaseName } from '../utils/sort';
+import { sortByBaseName } from './utils/sort';
 
-const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 function App() {
   // useState
@@ -27,7 +26,7 @@ function App() {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [user, setUser] = useState({});
   const [authError, setAuthError] = useState('');
-
+  
   function handleCart() {
     setIsCartOpen(prev => !prev);
   }
@@ -76,27 +75,22 @@ function App() {
     );
   }
 
-
-  useEffect(() => {
-    // console.log(test);
-    (async () => {
-      try{
-        const res = await fetch('/api/inventory');
-        // console.log(res.status);
-        if(!res.ok){
-          throw new Error(res.status)
-        }
-        const data = await res.json()
-        console.log(data.inventory);
-        // setInventory([...products])
-        // if(data.status != 'success'){
-        //   throw new Error(data.status)
-        // }
-      }catch(error){
-        console.log(error.message);
+// fetching api
+useEffect(() => {
+  (async() => {
+    try{
+      const res = await fetch(`${baseUrl}/products`);
+      console.log(res);
+      if(!res.ok){
+        throw new Error(res.status)
       }
-    })()
-  }, [])
+      const products = await res.json()
+      setInventory([...products])
+    }catch(error){
+      console.log(error.message);
+    }
+  })()
+}, [])
 
   async function handleAuthenticate(creadentials) {
     const options = {
