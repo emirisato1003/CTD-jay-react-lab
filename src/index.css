@@ -33,6 +33,16 @@ header img{
   font-size: 2rem;
 }
 
+.userAction{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.userAction button{
+  border-radius: 10px;
+}
+
 .cart-item-number{
   position: absolute;
   color: white;

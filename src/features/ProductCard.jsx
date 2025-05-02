@@ -4,7 +4,7 @@ import ProductCardVariants from './ProductCardVariants';
 
 
 export default function ProductCard({ product, handleAddItemToCart }) {
-    console.log(product);
+    // console.log(product);
     const [isVariantShown, setIsVariantShown] = useState(false);
 
     return (

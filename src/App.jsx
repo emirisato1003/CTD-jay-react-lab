@@ -11,7 +11,10 @@ import Header from './layout/Header';
 import ProductCard from './features/ProductCard';
 import Cart from './features/Cart/Cart';
 import Footer from './layout/Footer';
+import AuthDialog from './features/Auth/AuthDialog';
+import { sortByBaseName } from '../utils/sort';
 
+const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 
 function App() {
   // useState
@@ -19,7 +22,8 @@ function App() {
   const [inventory, setInventory] = useState([]);
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isAuthenticating, setIsAuthenticating] = useState('false');
+  const [isAuthDialogOpen, setIsAuthDialogOpen] = useState(false);
+  const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [user, setUser] = useState({});
   const [authError, setAuthError] = useState('');
 
@@ -71,7 +75,6 @@ function App() {
     );
   }
 
-  const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 
   // useEffect(() => {
   //   (async () => {
@@ -99,28 +102,37 @@ function App() {
       headers: { 'Content-Type': 'application/json' }
     };
     try {
-      setIsAuthenticating(true)
+      setIsAuthenticating(true);
       const res = await fetch(`${baseUrl}/auth/login`, options);
       if (!res.ok) {
         // status will be 401 if authentication fails
         // we want to handle it differently then other errors
         if (res.status === 401) {
-          setAuthError(res.statusText)
+          setAuthError('email or password incorrect');
         }
         throw new Error(res.status);
       }
-      const userData = res.json()
+      const userData = res.json();
       // assigning an new object that's more convenient to work with
-      setUser({...userData.user, token: userData.token})
-      setIsAuthenticating(false)
+      setUser({ ...userData.user, token: userData.token });
+      setIsAuthenticating(false);
+      setAuthError('');
     } catch (error) {
+      setIsAuthenticating(false)
       console.log(error.message);
     }
   }
   return (
     <>
-      <Header cart={cart} handleCart={handleCart} />
+      <Header cart={cart} handleCart={handleCart} setIsAuthDialogOpen={setIsAuthDialogOpen} />
       <main>
+        {isAuthDialogOpen &&
+          <AuthDialog
+            handleAuthenticate={handleAuthenticate}
+            authError={authError}
+            isAuthenticating={isAuthenticating}
+            setIsAuthDialogOpen={setIsAuthDialogOpen}
+          />}
         <ProductList
           handleAddItemToCart={handleAddItemToCart}
           inventory={inventory}>
