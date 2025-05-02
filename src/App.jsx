@@ -12,6 +12,7 @@ import ProductCard from './features/ProductCard';
 import Cart from './features/Cart/Cart';
 import Footer from './layout/Footer';
 import AuthDialog from './features/Auth/AuthDialog';
+import "./server"
 import { sortByBaseName } from '../utils/sort';
 
 const baseUrl = import.meta.env.VITE_APP_BASE_URL;
@@ -76,24 +77,26 @@ function App() {
   }
 
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try{
-  //       const res = await fetch(`${baseUrl}/products`);
-  //       if(!res.ok){
-  //         throw new Error(res.status)
-  //       }
-  //       const data = await res.json()
-  //       console.log(products);
-  //       setInventory([...products])
-  //       // if(data.status != 'success'){
-  //       //   throw new Error(data.status)
-  //       // }
-  //     }catch(error){
-  //       console.log(error.message);
-  //     }
-  //   })
-  // }, [])
+  useEffect(() => {
+    // console.log(test);
+    (async () => {
+      try{
+        const res = await fetch('/api/inventory');
+        // console.log(res.status);
+        if(!res.ok){
+          throw new Error(res.status)
+        }
+        const data = await res.json()
+        console.log(data.inventory);
+        // setInventory([...products])
+        // if(data.status != 'success'){
+        //   throw new Error(data.status)
+        // }
+      }catch(error){
+        console.log(error.message);
+      }
+    })()
+  }, [])
 
   async function handleAuthenticate(creadentials) {
     const options = {
