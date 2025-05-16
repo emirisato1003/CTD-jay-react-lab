@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import placeholderImg from '../assets/placeholder.png';
-import ProductCardVariants from './ProductCardVariants';
+// import ProductCardVariants from './ProductCardVariants';
 import styled from 'styled-components';
+import ProductCardVariants from './ProductCardVariants';
 
+const Details = styled.p`
+padding: .5rem`;
+const Variants = styled(ProductCardVariants)`
+background-color: blue;
+`;
 
 export default function ProductCard({ product, handleAddItemToCart }) {
     // console.log(product);
     const [isVariantShown, setIsVariantShown] = useState(false);
-    const Details = styled.p`
-    padding: .5rem`;
-    
+
     return (
         <li>
             <div className="itemCard">
