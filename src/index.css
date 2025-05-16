@@ -115,7 +115,7 @@ button:hover{
 
 .cartListWrapper{
   background-color: #13284D;
-  color: white;
+  /* color: white; */
   transform: translate(800px,-800px);
   /* max-width: 550px; */
   min-width: 25vw;
@@ -127,6 +127,9 @@ button:hover{
   position: absolute;
 }
 
+.cartListWrapper h2{
+  color: white;
+}
 .cartScreen{
   backdrop-filter: blur(4px);
     border-radius: var(--medium-radius);

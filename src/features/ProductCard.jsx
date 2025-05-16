@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import placeholderImg from '../assets/placeholder.png';
 import ProductCardVariants from './ProductCardVariants';
+import styled from 'styled-components';
 
 
 export default function ProductCard({ product, handleAddItemToCart }) {
     // console.log(product);
     const [isVariantShown, setIsVariantShown] = useState(false);
-
+    const Details = styled.p`
+    padding: .5rem`
     return (
         <li>
             <div className="itemCard">
@@ -15,7 +17,7 @@ export default function ProductCard({ product, handleAddItemToCart }) {
                 </div>
                 <div className="itemCard-content">
                     <h2>{product.baseName}</h2>
-                    <p>{product.baseDescription}</p>
+                    <Details>{product.baseDescription}</Details>
                 </div>
                 <div className="itemCard-footer">
                     {product.variants?.length > 1 ?
