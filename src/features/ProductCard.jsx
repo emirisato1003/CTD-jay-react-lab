@@ -8,7 +8,8 @@ export default function ProductCard({ product, handleAddItemToCart }) {
     // console.log(product);
     const [isVariantShown, setIsVariantShown] = useState(false);
     const Details = styled.p`
-    padding: .5rem`
+    padding: .5rem`;
+    
     return (
         <li>
             <div className="itemCard">
@@ -34,4 +35,4 @@ export default function ProductCard({ product, handleAddItemToCart }) {
             </div>
         </li>
     );
-}
+};;
