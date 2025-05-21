@@ -92,10 +92,10 @@ useEffect(() => {
   })()
 }, [])
 
-  async function handleAuthenticate(creadentials) {
+  async function handleAuthenticate(credentials) {
     const options = {
       method: 'POST',
-      body: JSON.stringify(creadentials),
+      body: JSON.stringify(credentials),
       headers: { 'Content-Type': 'application/json' }
     };
     try {
@@ -109,7 +109,7 @@ useEffect(() => {
         }
         throw new Error(res.status);
       }
-      const userData = res.json();
+      const userData = await res.json();
       // assigning an new object that's more convenient to work with
       setUser({ ...userData.user, token: userData.token });
       setIsAuthenticating(false);
