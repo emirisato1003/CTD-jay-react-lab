@@ -2,7 +2,7 @@
 import './App.css';
 
 // React Hooks
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 
 // components
 import ProductList from './features/ProductList';
@@ -13,6 +13,7 @@ import Cart from './features/Cart/Cart';
 import Footer from './layout/Footer';
 import AuthDialog from './features/Auth/AuthDialog';
 import { sortByBaseName } from './utils/sort';
+import { initialState as cartInitialState, reducer as cartReducer } from './reducers/cart.reducer';
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -26,7 +27,8 @@ function App() {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [user, setUser] = useState({});
   const [authError, setAuthError] = useState('');
-  
+  const [cartState, dispatch] = useReducer(cartReducer, cartInitialState);
+
   function handleCart() {
     setIsCartOpen(prev => !prev);
   }
@@ -75,22 +77,22 @@ function App() {
     );
   }
 
-// fetching api
-useEffect(() => {
-  (async() => {
-    try{
-      const res = await fetch(`${baseUrl}/products`);
-      console.log(res);
-      if(!res.ok){
-        throw new Error(res.status)
+  // fetching api
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(`${baseUrl}/products`);
+        console.log(res);
+        if (!res.ok) {
+          throw new Error(res.status);
+        }
+        const products = await res.json();
+        setInventory([...products]);
+      } catch (error) {
+        console.log(error.message);
       }
-      const products = await res.json()
-      setInventory([...products])
-    }catch(error){
-      console.log(error.message);
-    }
-  })()
-}, [])
+    })();
+  }, []);
 
   async function handleAuthenticate(credentials) {
     const options = {
@@ -115,13 +117,13 @@ useEffect(() => {
       setIsAuthenticating(false);
       setAuthError('');
     } catch (error) {
-      setIsAuthenticating(false)
+      setIsAuthenticating(false);
       console.log(error.message);
     }
   }
   return (
     <>
-      <Header cart={cart} handleCart={handleCart} setIsAuthDialogOpen={setIsAuthDialogOpen} />
+      <Header cart={cart} handleCart={() => setIsCartOpen(true)} setIsAuthDialogOpen={setIsAuthDialogOpen} />
       <main>
         {isAuthDialogOpen &&
           <AuthDialog
@@ -135,11 +137,11 @@ useEffect(() => {
           inventory={inventory}>
           {promoteItem()}
         </ProductList>
-        {isCartOpen &&
+        {cartState.isCartOpen &&
           <Cart
             cart={cart}
             setCart={setCart}
-            handleCart={handleCart}
+            handleCart={() => setIsCartOpen(false)}
           />}
       </main>
       <Footer />

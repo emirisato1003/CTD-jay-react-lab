@@ -26,7 +26,7 @@ export default function Header({ cart, handleCart, setIsAuthDialogOpen }) {
             </div>
             <div className="userAction">
                 <button onClick={() => setIsAuthDialogOpen(true)}>Log in</button>
-                <div className="cart" onClick={() => handleCart()}>
+                <div className="cart" onClick={handleCart}>
                     <div className="cart-item-number">{getItemCount()}</div>
                     <img className="cart-logo" src={shoppingCartLogo} alt="shopping cart" />
                 </div>
