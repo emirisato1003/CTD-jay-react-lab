@@ -91,6 +91,7 @@ function App() {
           throw new Error(res.status);
         }
         const products = await res.json();
+        console.log(products);
         setInventory([...products]);
       } catch (error) {
         console.log(error.message);

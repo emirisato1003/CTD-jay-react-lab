@@ -4,7 +4,7 @@ import ctdLogo from '../../assets/icons/mono-blue-logo.svg';
 export default function AuthForm({ authError, handleAuthenticate, setIsAuthDialogOpen }) {
     const [email, setEmail] = useState('dev@test.com');
     const [password, setPassword] = useState('password123');
-    console.log(email);
+    // console.log(email);
     function handleSubmit(e) {
         e.preventDefault();
         handleAuthenticate({ email, password });
