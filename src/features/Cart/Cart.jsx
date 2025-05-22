@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import CartItem from './CartItem';
-export default function Cart({ cart, handleCart, setCart }) {
+export default function Cart({ cart, handleCloseCart, setCart }) {
     const [workingCart, setWorkingCart] = useState(cart);
     const [isFormDirty, setIsFormDirty] = useState(false);
 
@@ -64,7 +64,7 @@ export default function Cart({ cart, handleCart, setCart }) {
                     <ul className='cartList'>
                         {workingCart.map(item => {
                             return (
-                                <CartItem key={item.id} item={item} onHandleItemUpdate={handleUpdateField}/>
+                                <CartItem key={item.id} item={item} onHandleItemUpdate={handleUpdateField} />
                             );
                         })}
                         <h2>Cart Total: ${getCartTotal()}</h2>
@@ -76,7 +76,7 @@ export default function Cart({ cart, handleCart, setCart }) {
                         }
                     </ul>
                 }
-                <button onClick={handleCart} className='cartCloseBtn'>Close Cart</button>
+                <button onClick={handleCloseCart} className='cartCloseBtn'>Close Cart</button>
             </div>
         </>
     );

@@ -28,9 +28,13 @@ function App() {
   const [user, setUser] = useState({});
   const [authError, setAuthError] = useState('');
   const [cartState, dispatch] = useReducer(cartReducer, cartInitialState);
+  
+  function handleOpenCart() {
+    dispatch({type: 'open'})
+  }
 
-  function handleCart() {
-    setIsCartOpen(prev => !prev);
+  function handleCloseCart(){
+    dispatch({type: 'close'})
   }
 
   // common function in e-commerce app to add items to a shopping cart
@@ -123,7 +127,7 @@ function App() {
   }
   return (
     <>
-      <Header cart={cart} handleCart={() => setIsCartOpen(true)} setIsAuthDialogOpen={setIsAuthDialogOpen} />
+      <Header cart={cart} handleOpenCart={handleOpenCart} setIsAuthDialogOpen={setIsAuthDialogOpen} />
       <main>
         {isAuthDialogOpen &&
           <AuthDialog
@@ -141,7 +145,7 @@ function App() {
           <Cart
             cart={cart}
             setCart={setCart}
-            handleCart={() => setIsCartOpen(false)}
+            handleCloseCart={handleCloseCart}
           />}
       </main>
       <Footer />

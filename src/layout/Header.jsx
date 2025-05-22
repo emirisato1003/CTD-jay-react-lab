@@ -4,8 +4,8 @@ import ctdLogo from '../assets/icons/mono-blue-logo.svg';
 import shoppingCartLogo from '../assets/icons/shoppingCart.svg';
 import { useEffect } from "react";
 
-export default function Header({ cart, handleCart, setIsAuthDialogOpen }) {
-    // console.log(handleCart);
+export default function Header({ cart, handleOpenCart, setIsAuthDialogOpen }) {
+    // console.log(handleOpenCart);
     useEffect(() => {
         cart.forEach(item => {
             console.log(item.baseName, item.cartItemId);
@@ -26,7 +26,7 @@ export default function Header({ cart, handleCart, setIsAuthDialogOpen }) {
             </div>
             <div className="userAction">
                 <button onClick={() => setIsAuthDialogOpen(true)}>Log in</button>
-                <div className="cart" onClick={handleCart}>
+                <div className="cart" onClick={handleOpenCart}>
                     <div className="cart-item-number">{getItemCount()}</div>
                     <img className="cart-logo" src={shoppingCartLogo} alt="shopping cart" />
                 </div>
